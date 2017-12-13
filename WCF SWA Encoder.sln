@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Austria.WcfHelpers.SoapWithAttachments", "Microsoft.Austria.WcfHelpers.SoapWithAttachments\Microsoft.Austria.WcfHelpers.SoapWithAttachments.csproj", "{AB088324-87A5-4F00-BB2E-904CC6AB967F}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs06.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Microsoft.Austria.WcfHelpers.SoapWithAttachments\\Microsoft.Austria.WcfHelpers.SoapWithAttachments.csproj
+		SccProjectName1 = Microsoft.Austria.WcfHelpers.SoapWithAttachments
+		SccLocalPath1 = Microsoft.Austria.WcfHelpers.SoapWithAttachments
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB088324-87A5-4F00-BB2E-904CC6AB967F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB088324-87A5-4F00-BB2E-904CC6AB967F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB088324-87A5-4F00-BB2E-904CC6AB967F}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB088324-87A5-4F00-BB2E-904CC6AB967F}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{AB088324-87A5-4F00-BB2E-904CC6AB967F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB088324-87A5-4F00-BB2E-904CC6AB967F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
