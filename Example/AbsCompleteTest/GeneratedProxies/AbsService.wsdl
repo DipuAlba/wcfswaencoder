@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://soap.abs.client.chipkarte.at" xmlns:tns3="http://exceptions.soap.abs.client.chipkarte.at" xmlns:impl="http://soap.abs.client.chipkarte.at" xmlns:intf="http://soap.abs.client.chipkarte.at" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns2="http://exceptions.soap.base.client.chipkarte.at" xmlns:tns1="http://soap.base.client.chipkarte.at" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<!--WSDL created by Apache Axis version: 1.2RC1
+Built on Sep 29, 2004 (08:29:40 EDT)-->
+ <wsdl:types>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://soap.abs.client.chipkarte.at" elementFormDefault="qualified">
+   <import namespace="http://soap.base.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.base.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.abs.client.chipkarte.at"/>
+   <element name="checkStatus">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkStatusResponse">
+    <complexType>
+     <sequence>
+      <element name="checkStatusReturn" type="tns1:Property" maxOccurs="unbounded"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns2:AccessException"/>
+   <element name="fault1" type="tns2:ServiceException"/>
+   <element name="fault2" type="tns2:DialogException"/>
+   <element name="getSVTs">
+    <complexType/>
+   </element>
+   <element name="getSVTsResponse">
+    <complexType>
+     <sequence>
+      <element name="getSVTsReturn" type="tns1:SvtProperty" maxOccurs="unbounded"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sendenAnfrage">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="anfrage" type="impl:BewilligungsAnfrage"/>
+      <element name="cardReaderId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="PatientenDaten">
+    <sequence>
+     <element name="EKVKNummer" nillable="true" type="xsd:string"/>
+     <element name="SVNummer" nillable="true" type="xsd:string"/>
+     <element name="SVTCode" nillable="true" type="xsd:string"/>
+     <element name="geschlecht" nillable="true" type="xsd:string"/>
+     <element name="nachname" nillable="true" type="xsd:string"/>
+     <element name="vorname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Medikament">
+    <sequence>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="pharmanummer" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Verordnung">
+    <sequence>
+     <element name="begruendung" nillable="true" type="xsd:string"/>
+     <element name="diagnose" nillable="true" type="xsd:string"/>
+     <element name="dosierung" nillable="true" type="xsd:string"/>
+     <element name="langzeitverordnung" nillable="true" type="xsd:string"/>
+     <element name="magistraleZubereitung" nillable="true" type="xsd:string"/>
+     <element name="medikament" nillable="true" type="impl:Medikament"/>
+     <element name="packungsanzahl" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   
+   <complexType name="BewilligungsAnfrage">
+    <sequence>
+     <element name="antragstyp" nillable="true" type="xsd:string"/>
+     <element name="patientenDaten" nillable="true" type="impl:PatientenDaten"/>
+     <element name="verordnerinformation" nillable="true" type="xsd:string"/>
+     <element minOccurs="0" name="verordnungen" nillable="true" type="impl:Verordnung" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+   <element name="sendenAnfrageResponse">
+    <complexType>
+     <sequence>
+      <element name="sendenAnfrageReturn" type="impl:AnfrageAntwort"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="AnfrageAntwort">
+    <sequence>
+     <element name="bearbeitungNaechsterWerktag" type="xsd:boolean"/>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="patientenDaten" nillable="true" type="impl:PatientenDaten"/>
+    </sequence>
+   </complexType>
+   <element name="fault3" type="tns2:CardException"/>
+   <element name="fault4" type="tns3:InvalidParameterBewilligungsanfrageException"/>
+   
+   <element name="fault5" type="tns3:AbsException"/>
+   <element name="getStatusBewilligungsAnfragen">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="filterkriterien" type="impl:FilterKriterien"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="FilterKriterien">
+    <sequence>
+     <element name="anfrageStatus" nillable="true" type="xsd:string"/>
+     <element name="datumBis" nillable="true" type="xsd:string"/>
+     <element name="datumVon" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="getStatusBewilligungsAnfragenResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" name="getStatusBewilligungsAnfragenReturn" type="impl:StatusBewilligungsAnfrage" maxOccurs="unbounded"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="StatusBewilligungsAnfrage">
+    <sequence>
+     <element name="EKVKNummer" nillable="true" type="xsd:string"/>
+     <element name="SVNRPatient" nillable="true" type="xsd:string"/>
+     <element name="abfrageZeitpunkt" nillable="true" type="xsd:string"/>
+     <element name="anfrageId" nillable="true" type="xsd:string"/>
+     <element name="beantwortungsZeitpunkt" nillable="true" type="xsd:string"/>
+     <element name="einlangeZeitpunkt" nillable="true" type="xsd:string"/>
+     <element name="nachnamePatient" nillable="true" type="xsd:string"/>
+     <element name="vornamePatient" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="fault6" type="tns3:InvalidParameterGetAnfrageStatusException"/>
+   <element name="getRueckantwort">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="anfrageId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getRueckantwortResponse">
+    <complexType>
+     <sequence>
+      <element name="getRueckantwortReturn" type="impl:Rueckantwort"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="LangzeitVerordnung">
+    <sequence>
+     <element name="beantragteMonate" type="xsd:int"/>
+     <element name="bewilligteMonate" type="xsd:int"/>
+     <element name="bewilligtePackungen" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="AnfrageEntscheid">
+    <sequence>
+     <element name="beantragtePackungsanzahl" type="xsd:int"/>
+     <element name="beantragtesMedikament" nillable="true" type="impl:Medikament"/>
+     <element name="bewilligtePackungsanzahl" type="xsd:int"/>
+     <element name="bewilligtesMedikament" nillable="true" type="impl:Medikament"/>
+     <element name="infoText" nillable="true" type="xsd:string"/>
+     <element name="langzeitVerordnung" nillable="true" type="impl:LangzeitVerordnung"/>
+     <element name="magistraleZubereitung" nillable="true" type="xsd:string"/>
+     <element name="verordnungsEntscheidung" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   
+   <complexType name="Rueckantwort">
+    <sequence>
+     <element name="EKVKPatient" nillable="true" type="xsd:string"/>
+     <element name="SVNRPatient" nillable="true" type="xsd:string"/>
+     <element name="abfrageZeitpunkt" nillable="true" type="xsd:string"/>
+     <element minOccurs="0" name="anfrageEntscheide" nillable="true" type="impl:AnfrageEntscheid" maxOccurs="unbounded"/>
+     <element name="anfrageId" nillable="true" type="xsd:string"/>
+     <element name="antragstyp" nillable="true" type="xsd:string"/>
+     <element name="beantwortungsZeitpunkt" nillable="true" type="xsd:string"/>
+     <element name="bewilligungsAnfrage" nillable="true" type="impl:BewilligungsAnfrage"/>
+     <element name="einlangeZeitpunkt" nillable="true" type="xsd:string"/>
+     <element name="infoText" nillable="true" type="xsd:string"/>
+     <element name="nachnamePatient" nillable="true" type="xsd:string"/>
+     <element name="referenzId" nillable="true" type="xsd:string"/>
+     <element name="vornamePatient" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="fault7" type="tns3:InvalidParameterRueckantwortException"/>
+   <element name="abfragenLangzeitbewilligung">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="sVNRPatient" type="xsd:string"/>
+      <element name="cardReaderId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="abfragenLangzeitbewilligungResponse">
+    <complexType>
+     <sequence>
+      <element name="abfragenLangzeitbewilligungReturn" type="impl:LangzeitbewilligungsAbfrageErgebnis" maxOccurs="unbounded"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="LangzeitbewilligungsAbfrageErgebnis">
+    <sequence>
+     <element name="SVNRPatient" nillable="true" type="xsd:string"/>
+     <element name="abgabeMoeglich" type="xsd:boolean"/>
+     <element name="bewilligteAbgabemenge" type="xsd:int"/>
+     <element name="datumGueltigBis" nillable="true" type="xsd:string"/>
+     <element name="datumNaechstMoeglicheFolgeverordnung" nillable="true" type="xsd:string"/>
+     <element name="dosierung" nillable="true" type="xsd:string"/>
+     <element name="heuteBereitsVerordnet" type="xsd:boolean"/>
+     <element name="heuteBereitsVerordneteMenge" type="xsd:int"/>
+     <element name="maximaleAbgabemenge" type="xsd:int"/>
+     <element name="medikamentName" nillable="true" type="xsd:string"/>
+     <element name="monatsBedarf" type="xsd:int"/>
+     <element name="nachnamePatient" nillable="true" type="xsd:string"/>
+     <element name="offeneAbgabemenge" type="xsd:int"/>
+     <element name="pharmanummer" nillable="true" type="xsd:string"/>
+     <element name="vornamePatient" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="sendenFolgeverordnung">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="ausstellungsParameter" type="impl:FolgeverordnungsAusstellungsParameter"/>
+      <element name="cardReaderId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="FolgeverordnungsAusstellungsParameter">
+    <sequence>
+     <element name="SVNRPatient" nillable="true" type="xsd:string"/>
+     <element name="SVTCode" nillable="true" type="xsd:string"/>
+     <element name="beantragteAbgabemenge" type="xsd:int"/>
+     <element name="medikamentName" nillable="true" type="xsd:string"/>
+     <element name="pharmanummer" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="sendenFolgeverordnungResponse">
+    <complexType>
+     <sequence>
+      <element name="sendenFolgeverordnungReturn" type="impl:FolgeverordnungsAusstellungsErgebnis"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="FolgeverordnungsAusstellungsErgebnis">
+    <sequence>
+     <element name="SVNRPatient" nillable="true" type="xsd:string"/>
+     <element name="SVTCode" nillable="true" type="xsd:string"/>
+     <element name="bewilligteAbgabemenge" type="xsd:int"/>
+     <element name="medikamentName" nillable="true" type="xsd:string"/>
+     <element name="nachnamePatient" nillable="true" type="xsd:string"/>
+     <element name="pharmanummer" nillable="true" type="xsd:string"/>
+     <element name="referenzNr" nillable="true" type="xsd:string"/>
+     <element name="vornamePatient" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://soap.base.client.chipkarte.at" elementFormDefault="qualified">
+   <import namespace="http://exceptions.soap.base.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.abs.client.chipkarte.at"/>
+   <import namespace="http://soap.abs.client.chipkarte.at"/>
+   <complexType name="Property">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:string"/>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="BaseProperty">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:string"/>
+     <element name="nurAnzeige" type="xsd:boolean"/>
+     <element name="text" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SvtProperty">
+    <complexContent>
+     <extension base="tns1:BaseProperty">
+      <sequence>
+       <element name="ASVG" type="xsd:boolean"/>
+       <element name="EKVKCode" nillable="true" type="xsd:string"/>
+       <element name="EKVKName" nillable="true" type="xsd:string"/>
+       <element name="kurzbezeichnung" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://exceptions.soap.base.client.chipkarte.at" elementFormDefault="qualified">
+   <import namespace="http://soap.base.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.abs.client.chipkarte.at"/>
+   <import namespace="http://soap.abs.client.chipkarte.at"/>
+   <complexType name="BaseException">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:string"/>
+     <element name="errorCode" type="xsd:int"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AccessException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ServiceException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="DialogException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CardException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://exceptions.soap.abs.client.chipkarte.at" elementFormDefault="qualified">
+   <import namespace="http://soap.base.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.base.client.chipkarte.at"/>
+   <import namespace="http://soap.abs.client.chipkarte.at"/>
+   <complexType name="InvalidParameterBewilligungsanfrageException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AbsException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence>
+       <element minOccurs="0" name="KVTCodes" nillable="true" type="xsd:string" maxOccurs="unbounded"/>
+       <element name="patientenDaten" nillable="true" type="impl:PatientenDaten"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="InvalidParameterGetAnfrageStatusException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="InvalidParameterRueckantwortException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="checkStatusResponse">
+
+      <wsdl:part name="parameters" element="impl:checkStatusResponse"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="InvalidParameterRueckantwortException">
+
+      <wsdl:part name="fault" element="impl:fault7"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRueckantwortResponse">
+
+      <wsdl:part name="parameters" element="impl:getRueckantwortResponse"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="InvalidParameterGetAnfrageStatusException">
+
+      <wsdl:part name="fault" element="impl:fault6"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="InvalidParameterBewilligungsanfrageException">
+
+      <wsdl:part name="fault" element="impl:fault4"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sendenFolgeverordnungResponse">
+
+      <wsdl:part name="parameters" element="impl:sendenFolgeverordnungResponse"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="abfragenLangzeitbewilligungResponse">
+
+      <wsdl:part name="parameters" element="impl:abfragenLangzeitbewilligungResponse"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="AbsException">
+
+      <wsdl:part name="fault" element="impl:fault5"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="CardException">
+
+      <wsdl:part name="fault" element="impl:fault3"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sendenAnfrageResponse">
+
+      <wsdl:part name="parameters" element="impl:sendenAnfrageResponse"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSVTsRequest">
+
+      <wsdl:part name="parameters" element="impl:getSVTs"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="DialogException">
+
+      <wsdl:part name="fault" element="impl:fault2"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSVTsResponse">
+
+      <wsdl:part name="parameters" element="impl:getSVTsResponse"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="abfragenLangzeitbewilligungRequest">
+
+      <wsdl:part name="parameters" element="impl:abfragenLangzeitbewilligung"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRueckantwortRequest">
+
+      <wsdl:part name="parameters" element="impl:getRueckantwort"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkStatusRequest">
+
+      <wsdl:part name="parameters" element="impl:checkStatus"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getStatusBewilligungsAnfragenRequest">
+
+      <wsdl:part name="parameters" element="impl:getStatusBewilligungsAnfragen"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ServiceException">
+
+      <wsdl:part name="fault" element="impl:fault1"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sendenAnfrageRequest">
+
+      <wsdl:part name="parameters" element="impl:sendenAnfrage"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getStatusBewilligungsAnfragenResponse">
+
+      <wsdl:part name="parameters" element="impl:getStatusBewilligungsAnfragenResponse"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="AccessException">
+
+      <wsdl:part name="fault" element="impl:fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sendenFolgeverordnungRequest">
+
+      <wsdl:part name="parameters" element="impl:sendenFolgeverordnung"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="IAbsService">
+
+      <wsdl:operation name="checkStatus">
+
+         <wsdl:input name="checkStatusRequest" message="impl:checkStatusRequest"/>
+
+         <wsdl:output name="checkStatusResponse" message="impl:checkStatusResponse"/>
+
+         <wsdl:fault name="AccessException" message="impl:AccessException"/>
+
+         <wsdl:fault name="DialogException" message="impl:DialogException"/>
+
+         <wsdl:fault name="ServiceException" message="impl:ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSVTs">
+
+         <wsdl:input name="getSVTsRequest" message="impl:getSVTsRequest"/>
+
+         <wsdl:output name="getSVTsResponse" message="impl:getSVTsResponse"/>
+
+         <wsdl:fault name="ServiceException" message="impl:ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sendenAnfrage">
+
+         <wsdl:input name="sendenAnfrageRequest" message="impl:sendenAnfrageRequest"/>
+
+         <wsdl:output name="sendenAnfrageResponse" message="impl:sendenAnfrageResponse"/>
+
+         <wsdl:fault name="AccessException" message="impl:AccessException"/>
+
+         <wsdl:fault name="DialogException" message="impl:DialogException"/>
+
+         <wsdl:fault name="InvalidParameterBewilligungsanfrageException" message="impl:InvalidParameterBewilligungsanfrageException"/>
+
+         <wsdl:fault name="CardException" message="impl:CardException"/>
+
+         <wsdl:fault name="ServiceException" message="impl:ServiceException"/>
+
+         <wsdl:fault name="AbsException" message="impl:AbsException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getStatusBewilligungsAnfragen">
+
+         <wsdl:input name="getStatusBewilligungsAnfragenRequest" message="impl:getStatusBewilligungsAnfragenRequest"/>
+
+         <wsdl:output name="getStatusBewilligungsAnfragenResponse" message="impl:getStatusBewilligungsAnfragenResponse"/>
+
+         <wsdl:fault name="AccessException" message="impl:AccessException"/>
+
+         <wsdl:fault name="InvalidParameterGetAnfrageStatusException" message="impl:InvalidParameterGetAnfrageStatusException"/>
+
+         <wsdl:fault name="DialogException" message="impl:DialogException"/>
+
+         <wsdl:fault name="ServiceException" message="impl:ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRueckantwort">
+
+         <wsdl:input name="getRueckantwortRequest" message="impl:getRueckantwortRequest"/>
+
+         <wsdl:output name="getRueckantwortResponse" message="impl:getRueckantwortResponse"/>
+
+         <wsdl:fault name="AccessException" message="impl:AccessException"/>
+
+         <wsdl:fault name="DialogException" message="impl:DialogException"/>
+
+         <wsdl:fault name="InvalidParameterRueckantwortException" message="impl:InvalidParameterRueckantwortException"/>
+
+         <wsdl:fault name="ServiceException" message="impl:ServiceException"/>
+
+         <wsdl:fault name="AbsException" message="impl:AbsException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="abfragenLangzeitbewilligung">
+
+         <wsdl:input name="abfragenLangzeitbewilligungRequest" message="impl:abfragenLangzeitbewilligungRequest"/>
+
+         <wsdl:output name="abfragenLangzeitbewilligungResponse" message="impl:abfragenLangzeitbewilligungResponse"/>
+
+         <wsdl:fault name="AccessException" message="impl:AccessException"/>
+
+         <wsdl:fault name="DialogException" message="impl:DialogException"/>
+
+         <wsdl:fault name="InvalidParameterBewilligungsanfrageException" message="impl:InvalidParameterBewilligungsanfrageException"/>
+
+         <wsdl:fault name="CardException" message="impl:CardException"/>
+
+         <wsdl:fault name="ServiceException" message="impl:ServiceException"/>
+
+         <wsdl:fault name="AbsException" message="impl:AbsException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sendenFolgeverordnung">
+
+         <wsdl:input name="sendenFolgeverordnungRequest" message="impl:sendenFolgeverordnungRequest"/>
+
+         <wsdl:output name="sendenFolgeverordnungResponse" message="impl:sendenFolgeverordnungResponse"/>
+
+         <wsdl:fault name="AccessException" message="impl:AccessException"/>
+
+         <wsdl:fault name="DialogException" message="impl:DialogException"/>
+
+         <wsdl:fault name="InvalidParameterBewilligungsanfrageException" message="impl:InvalidParameterBewilligungsanfrageException"/>
+
+         <wsdl:fault name="CardException" message="impl:CardException"/>
+
+         <wsdl:fault name="ServiceException" message="impl:ServiceException"/>
+
+         <wsdl:fault name="AbsException" message="impl:AbsException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="soap_abs_7.0SoapBinding" type="impl:IAbsService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+
+      <wsdl:operation name="checkStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkStatusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSVTs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSVTsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSVTsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sendenAnfrage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sendenAnfrageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sendenAnfrageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="InvalidParameterBewilligungsanfrageException">
+
+            <wsdlsoap:fault name="InvalidParameterBewilligungsanfrageException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AbsException">
+
+            <wsdlsoap:fault name="AbsException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getStatusBewilligungsAnfragen">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getStatusBewilligungsAnfragenRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getStatusBewilligungsAnfragenResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="InvalidParameterGetAnfrageStatusException">
+
+            <wsdlsoap:fault name="InvalidParameterGetAnfrageStatusException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRueckantwort">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRueckantwortRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRueckantwortResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="InvalidParameterRueckantwortException">
+
+            <wsdlsoap:fault name="InvalidParameterRueckantwortException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AbsException">
+
+            <wsdlsoap:fault name="AbsException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="abfragenLangzeitbewilligung">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="abfragenLangzeitbewilligungRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="abfragenLangzeitbewilligungResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="InvalidParameterBewilligungsanfrageException">
+
+            <wsdlsoap:fault name="InvalidParameterBewilligungsanfrageException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AbsException">
+
+            <wsdlsoap:fault name="AbsException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sendenFolgeverordnung">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sendenFolgeverordnungRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sendenFolgeverordnungResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="InvalidParameterBewilligungsanfrageException">
+
+            <wsdlsoap:fault name="InvalidParameterBewilligungsanfrageException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AbsException">
+
+            <wsdlsoap:fault name="AbsException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="soap_abs_7.0">
+
+      <wsdl:port name="soap_abs_7.0" binding="impl:soap_abs_7.0SoapBinding">
+
+         <wsdlsoap:address location="http://localhost/axis/services/soap_abs_7.0"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

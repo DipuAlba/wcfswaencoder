@@ -1,0 +1,2499 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions targetNamespace="http://soap.uze.client.chipkarte.at" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soap.uze.client.chipkarte.at" xmlns:intf="http://soap.uze.client.chipkarte.at" xmlns:tns1="http://soap.base.client.chipkarte.at" xmlns:tns2="http://exceptions.soap.base.client.chipkarte.at" xmlns:tns3="http://exceptions.soap.uze.client.chipkarte.at" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.2RC1
+Built on Sep 29, 2004 (08:29:40 EDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://soap.uze.client.chipkarte.at" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exceptions.soap.uze.client.chipkarte.at"/>
+   <import namespace="http://soap.base.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.base.client.chipkarte.at"/>
+   <element name="checkStatus">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkStatusResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="checkStatusReturn" type="tns1:Property"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns2:AccessException"/>
+   <element name="fault1" type="tns2:DialogException"/>
+   <element name="fault2" type="tns2:ServiceException"/>
+   <element name="getFachgebieteZo">
+    <complexType/>
+   </element>
+   <element name="getFachgebieteZoResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getFachgebieteZoReturn" type="tns1:BaseProperty"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getWeisungstypenLa">
+    <complexType/>
+   </element>
+   <element name="getWeisungstypenLaResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getWeisungstypenLaReturn" type="tns1:BaseProperty"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getWeisungstypenLe">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getWeisungstypenLeResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getWeisungstypenLeReturn" type="tns1:BaseProperty"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBehandlungskontexte">
+    <complexType/>
+   </element>
+   <element name="getBehandlungskontexteResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getBehandlungskontexteReturn" type="tns1:BaseProperty"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getModifyUzeStatusLa">
+    <complexType/>
+   </element>
+   <element name="getModifyUzeStatusLaResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getModifyUzeStatusLaReturn" type="tns1:BaseProperty"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllUzeStatus">
+    <complexType/>
+   </element>
+   <element name="getAllUzeStatusResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllUzeStatusReturn" type="tns1:BaseProperty"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="acquireAnspruchSvPerson">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="anspruchSvPersonReq" type="impl:AnspruchSvPersonReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="AnspruchSvPersonReq">
+    <sequence>
+     <element name="anspruchId" nillable="true" type="xsd:string"/>
+     <element name="behandlungsKontext" nillable="true" type="xsd:string"/>
+     <element name="fachgebietLe" nillable="true" type="xsd:string"/>
+     <element name="kblKennzeichen" type="xsd:boolean"/>
+     <element name="ordinationsIdLe" nillable="true" type="xsd:string"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="svtCode" nillable="true" type="xsd:string"/>
+     <element name="weisungsTyp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="acquireAnspruchSvPersonResponse">
+    <complexType>
+     <sequence>
+      <element name="acquireAnspruchSvPersonReturn" type="impl:AnspruchSvPersonResp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Anspruch">
+    <sequence>
+     <element name="abgeleitetSvNummer" nillable="true" type="xsd:string"/>
+     <element name="abgeleitetTitelHinten" nillable="true" type="xsd:string"/>
+     <element name="abgeleitetTitelVorne" nillable="true" type="xsd:string"/>
+     <element name="abgeleitetVorname" nillable="true" type="xsd:string"/>
+     <element name="abgeleitetZuname" nillable="true" type="xsd:string"/>
+     <element name="anspruchId" nillable="true" type="xsd:string"/>
+     <element name="svtCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SvPatientInfo">
+    <sequence>
+     <element name="geburtsDatum" nillable="true" type="xsd:string"/>
+     <element name="geschlechtCode" nillable="true" type="xsd:string"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="titelHinten" nillable="true" type="xsd:string"/>
+     <element name="titelVorne" nillable="true" type="xsd:string"/>
+     <element name="vorname" nillable="true" type="xsd:string"/>
+     <element name="zuname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AnspruchSvPersonResp">
+    <sequence>
+     <element name="anspruch" nillable="true" type="impl:Anspruch"/>
+     <element name="svPatient" nillable="true" type="impl:SvPatientInfo"/>
+    </sequence>
+   </complexType>
+   <element name="fault3" type="tns2:CardException"/>
+   <element name="fault4" type="tns3:UzeInvalidParameterException"/>
+   <element name="fault5" type="tns3:UzeException"/>
+   
+   <element name="fault6" type="tns3:UzeAnspruchException"/>
+   <element name="searchLeForZo">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="leForZoSearchReq" type="impl:LeForZoSearchReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="LeForZoSearchReq">
+    <sequence>
+     <element name="fachgebiet" nillable="true" type="xsd:string"/>
+     <element name="vornameVp" nillable="true" type="xsd:string"/>
+     <element name="vpNummer" nillable="true" type="xsd:string"/>
+     <element name="zunameVp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="searchLeForZoResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="searchLeForZoReturn" type="impl:VpOrdinationInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   
+   <complexType name="VpOrdinationInfo">
+    <sequence>
+     <element name="PLZ" nillable="true" type="xsd:string"/>
+     <element name="anredeCode" nillable="true" type="xsd:string"/>
+     <element maxOccurs="unbounded" name="fachgebiete" nillable="true" type="xsd:string"/>
+     <element name="ordinationsId" type="xsd:long"/>
+     <element name="ort" nillable="true" type="xsd:string"/>
+     <element name="strasse" nillable="true" type="xsd:string"/>
+     <element name="titelHinten" nillable="true" type="xsd:string"/>
+     <element name="titelVorne" nillable="true" type="xsd:string"/>
+     <element name="vorname" nillable="true" type="xsd:string"/>
+     <element name="vpNummer" nillable="true" type="xsd:string"/>
+     <element name="zuname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="storeUze">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="storeUzeReq" type="impl:StoreUzeReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Adresse">
+    <sequence>
+     <element name="PLZ" nillable="true" type="xsd:string"/>
+     <element name="landbezeichnung" nillable="true" type="xsd:string"/>
+     <element name="ort" nillable="true" type="xsd:string"/>
+     <element name="strasse" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Kontakt">
+    <sequence>
+     <element name="adresse" nillable="true" type="impl:Adresse"/>
+     <element name="telefon" nillable="true" type="xsd:string"/>
+     <element name="titelHinten" nillable="true" type="xsd:string"/>
+     <element name="titelVorne" nillable="true" type="xsd:string"/>
+     <element name="vorname" nillable="true" type="xsd:string"/>
+     <element name="zuname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="StoreUzeMedDaten">
+    <sequence>
+     <element name="akutTherapie" nillable="true" type="xsd:string"/>
+     <element name="allergieMuInfo" nillable="true" type="xsd:string"/>
+     <element name="antikoaguliert" nillable="true" type="xsd:string"/>
+     <element name="gewuenschteLeistung" nillable="true" type="xsd:string"/>
+     <element name="medikation" nillable="true" type="xsd:string"/>
+     <element name="notizLa" nillable="true" type="xsd:string"/>
+     <element name="symptomBeschreibung" nillable="true" type="xsd:string"/>
+     <element name="verdachtsDiagnose" nillable="true" type="xsd:string"/>
+     <element name="vorgeschichte" nillable="true" type="xsd:string"/>
+     <element name="wesentlicheNebenDiagnosen" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="StoreUzeReq">
+    <sequence>
+     <element name="administrativeVermerke" nillable="true" type="xsd:string"/>
+     <element name="adressePatient" nillable="true" type="impl:Adresse"/>
+     <element name="anspruchId" nillable="true" type="xsd:string"/>
+     <element name="behandlungsKontext" nillable="true" type="xsd:string"/>
+     <element name="bewilligungsPflichtig" nillable="true" type="xsd:string"/>
+     <element name="dringend" type="xsd:boolean"/>
+     <element name="emailLa" nillable="true" type="xsd:string"/>
+     <element name="fachabteilungLe" nillable="true" type="xsd:string"/>
+     <element name="fachgebietLe" nillable="true" type="xsd:string"/>
+     <element name="hausarzt" nillable="true" type="impl:Kontakt"/>
+     <element name="kblKennzeichen" type="xsd:boolean"/>
+     <element name="medVertrauensPerson" nillable="true" type="impl:Kontakt"/>
+     <element name="medizinischeDaten" nillable="true" type="impl:StoreUzeMedDaten"/>
+     <element name="ordinationsIdLe" nillable="true" type="xsd:string"/>
+     <element name="ordinationszeitenLa" nillable="true" type="xsd:string"/>
+     <element name="patientenVerfuegung" nillable="true" type="xsd:string"/>
+     <element name="privateKontaktPerson" nillable="true" type="impl:Kontakt"/>
+     <element name="sachwalter" nillable="true" type="impl:Kontakt"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="svtCode" nillable="true" type="xsd:string"/>
+     <element name="telefonLa" nillable="true" type="xsd:string"/>
+     <element name="telefonPatient" nillable="true" type="xsd:string"/>
+     <element name="weisungsTyp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="storeUzeResponse">
+    <complexType>
+     <sequence>
+      <element name="storeUzeReturn" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="MedDatenErweiterung">
+    <sequence>
+     <element name="datenBezeichner" nillable="true" type="xsd:string"/>
+     <element name="datenInhalt" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   
+   <complexType name="MedDaten">
+    <sequence>
+     <element name="akutTherapie" nillable="true" type="xsd:string"/>
+     <element name="allergieMuInfo" nillable="true" type="xsd:string"/>
+     <element name="antikoaguliert" nillable="true" type="xsd:string"/>
+     <element name="gewuenschteLeistung" nillable="true" type="xsd:string"/>
+     <element name="medikation" nillable="true" type="xsd:string"/>
+     <element name="notizLa" nillable="true" type="xsd:string"/>
+     <element name="symptomBeschreibung" nillable="true" type="xsd:string"/>
+     <element name="verdachtsDiagnose" nillable="true" type="xsd:string"/>
+     <element name="vorgeschichte" nillable="true" type="xsd:string"/>
+     <element minOccurs="0" maxOccurs="unbounded" name="weitereMedizinischeInformationen" nillable="true" type="impl:MedDatenErweiterung"/>
+     <element name="wesentlicheNebenDiagnosen" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UZEWeisung">
+    <sequence>
+     <element name="administrativeVermerke" nillable="true" type="xsd:string"/>
+     <element name="adressePatient" nillable="true" type="impl:Adresse"/>
+     <element name="anlageVorhanden" type="xsd:boolean"/>
+     <element name="anspruch" nillable="true" type="impl:Anspruch"/>
+     <element name="ausstellungsZeitpunkt" nillable="true" type="xsd:string"/>
+     <element name="behandlungsKontext" nillable="true" type="xsd:string"/>
+     <element name="bewilligungVorliegend" type="xsd:boolean"/>
+     <element name="bewilligungsPflichtig" nillable="true" type="xsd:string"/>
+     <element name="dringlich" type="xsd:boolean"/>
+     <element name="einloeseZeitpunkt" nillable="true" type="xsd:string"/>
+     <element name="emailLa" nillable="true" type="xsd:string"/>
+     <element name="fachabteilungLe" nillable="true" type="xsd:string"/>
+     <element name="fachgebietLe" nillable="true" type="xsd:string"/>
+     <element name="gueltigBis" nillable="true" type="xsd:string"/>
+     <element name="hausarzt" nillable="true" type="impl:Kontakt"/>
+     <element name="kblKennzeichen" type="xsd:boolean"/>
+     <element name="medVertrauensPerson" nillable="true" type="impl:Kontakt"/>
+     <element name="medizinischeDaten" nillable="true" type="impl:MedDaten"/>
+     <element name="ordinationLa" nillable="true" type="impl:VpOrdinationInfo"/>
+     <element name="ordinationLe" nillable="true" type="impl:VpOrdinationInfo"/>
+     <element name="ordinationszeitenLa" nillable="true" type="xsd:string"/>
+     <element name="patientenVerfuegung" nillable="true" type="xsd:string"/>
+     <element name="privateKontaktPerson" nillable="true" type="impl:Kontakt"/>
+     <element name="sachwalter" nillable="true" type="impl:Kontakt"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="svPatient" nillable="true" type="impl:SvPatientInfo"/>
+     <element name="telefonLa" nillable="true" type="xsd:string"/>
+     <element name="telefonPatient" nillable="true" type="xsd:string"/>
+     <element name="uzeCode" nillable="true" type="xsd:string"/>
+     <element name="uzeId" type="xsd:long"/>
+     <element name="version" type="xsd:int"/>
+     <element name="weisungsTyp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="searchUzeLa">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="uzeLaSearchReq" type="impl:UzeLaSearchReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UzeLaSearchReq">
+    <sequence>
+     <element name="ordinationsIdLa" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="suchzeitraumBis" nillable="true" type="xsd:string"/>
+     <element name="suchzeitraumVon" nillable="true" type="xsd:string"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="uzeCode" nillable="true" type="xsd:string"/>
+     <element name="weisungsTyp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="searchUzeLaResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchUzeLaReturn" nillable="true" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchModifiableUzeLa">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="modifiableUzeLaSearchReq" type="impl:ModifiableUzeLaSearchReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ModifiableUzeLaSearchReq">
+    <sequence>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="uzeCode" nillable="true" type="xsd:string"/>
+     <element name="weisungsTyp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="searchModifiableUzeLaResponse">
+    <complexType>
+     <sequence>
+      <element name="searchModifiableUzeLaReturn" type="impl:ModifiableUzeSearchResp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ModifiableUze">
+    <sequence>
+     <element name="modifizierbarBis" nillable="true" type="xsd:string"/>
+     <element name="uze" nillable="true" type="impl:UZEWeisung"/>
+    </sequence>
+   </complexType>
+   
+   <complexType name="ModifiableUzeSearchResp">
+    <sequence>
+     <element minOccurs="0" maxOccurs="unbounded" name="modifizierbareUze" nillable="true" type="impl:ModifiableUze"/>
+     <element name="serverZeitstempel" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="changeUzeLa">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="uzeLaChangeReq" type="impl:UzeLaChangeReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UzeLaChangeReq">
+    <sequence>
+     <element name="administrativeVermerke" nillable="true" type="xsd:string"/>
+     <element name="adressePatient" nillable="true" type="impl:Adresse"/>
+     <element name="emailLa" nillable="true" type="xsd:string"/>
+     <element name="hausarzt" nillable="true" type="impl:Kontakt"/>
+     <element name="medVertrauensPerson" nillable="true" type="impl:Kontakt"/>
+     <element name="notizLa" nillable="true" type="xsd:string"/>
+     <element name="ordinationsIdLe" nillable="true" type="xsd:string"/>
+     <element name="ordinationszeitenLa" nillable="true" type="xsd:string"/>
+     <element name="patientenVerfuegung" nillable="true" type="xsd:string"/>
+     <element name="privateKontaktPerson" nillable="true" type="impl:Kontakt"/>
+     <element name="sachwalter" nillable="true" type="impl:Kontakt"/>
+     <element name="telefonPatient" nillable="true" type="xsd:string"/>
+     <element name="uzeId" type="xsd:long"/>
+     <element name="version" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <element name="changeUzeLaResponse">
+    <complexType>
+     <sequence>
+      <element name="changeUzeLaReturn" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelUzeLa">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="uzeId" type="xsd:long"/>
+      <element name="version" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelUzeLaResponse">
+    <complexType>
+     <sequence>
+      <element name="cancelUzeLaReturn" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="restoreUzeLa">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="uzeId" type="xsd:long"/>
+      <element name="version" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="restoreUzeLaResponse">
+    <complexType>
+     <sequence>
+      <element name="restoreUzeLaReturn" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchRealizableUze">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="realizableUzeSearchReq" type="impl:RealizableUzeSearchReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="RealizableUzeSearchReq">
+    <sequence>
+     <element name="fachgebiet" nillable="true" type="xsd:string"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="uzeCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="searchRealizableUzeResponse">
+    <complexType>
+     <sequence>
+      <element name="searchRealizableUzeReturn" type="impl:RealizableUzeSearchResp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ECardTicket">
+    <sequence>
+     <element name="clientSignatur" type="xsd:base64Binary"/>
+     <element name="signaturFormatCode" nillable="true" type="xsd:string"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="vpNummer" nillable="true" type="xsd:string"/>
+     <element name="zeitStempel" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   
+   <complexType name="RealizableUzeSearchResp">
+    <sequence>
+     <element name="ecardTicket" nillable="true" type="impl:ECardTicket"/>
+     <element minOccurs="0" maxOccurs="unbounded" name="uze" nillable="true" type="impl:UZEWeisung"/>
+    </sequence>
+   </complexType>
+   <element name="searchRealizableZo">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="realizableZoSearchReq" type="impl:RealizableZoSearchReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="RealizableZoSearchReq">
+    <sequence>
+     <element name="suchzeitraumBis" nillable="true" type="xsd:string"/>
+     <element name="suchzeitraumVon" nillable="true" type="xsd:string"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="uzeCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="searchRealizableZoResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchRealizableZoReturn" nillable="true" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="realizeUze">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="realizeUzeReq" type="impl:RealizeUzeReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="RealizeUzeReq">
+    <sequence>
+     <element name="anspruchId" nillable="true" type="xsd:string"/>
+     <element name="bewilligungVorliegend" type="xsd:boolean"/>
+     <element name="bewilligungsPflichtig" nillable="true" type="xsd:string"/>
+     <element name="ecardTicket" nillable="true" type="impl:ECardTicket"/>
+     <element name="fachgebietEinloesung" nillable="true" type="xsd:string"/>
+     <element name="kblKennzeichen" type="xsd:boolean"/>
+     <element name="svtCode" nillable="true" type="xsd:string"/>
+     <element name="uzeCode" nillable="true" type="xsd:string"/>
+     <element name="uzeId" type="xsd:long"/>
+     <element name="version" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <element name="realizeUzeResponse">
+    <complexType>
+     <sequence>
+      <element name="realizeUzeReturn" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   
+   <element name="fault7" type="tns3:UzeFachgebietException"/>
+   <element name="searchUzeLe">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="uzeLeSearchReq" type="impl:UzeLeSearchReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UzeLeSearchReq">
+    <sequence>
+     <element name="ordinationsIdLe" nillable="true" type="xsd:string"/>
+     <element name="suchzeitraumBis" nillable="true" type="xsd:string"/>
+     <element name="suchzeitraumVon" nillable="true" type="xsd:string"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="uzeCode" nillable="true" type="xsd:string"/>
+     <element name="weisungsTyp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="searchUzeLeResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchUzeLeReturn" nillable="true" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchModifiableUzeLe">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="modifiableUzeLeSearchReq" type="impl:ModifiableUzeLeSearchReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ModifiableUzeLeSearchReq">
+    <sequence>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="uzeCode" nillable="true" type="xsd:string"/>
+     <element name="weisungsTyp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="searchModifiableUzeLeResponse">
+    <complexType>
+     <sequence>
+      <element name="searchModifiableUzeLeReturn" type="impl:ModifiableUzeSearchResp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelUzeLe">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="uzeId" type="xsd:long"/>
+      <element name="version" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelUzeLeResponse">
+    <complexType>
+     <sequence>
+      <element name="cancelUzeLeReturn" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="preparePatientenInformationsBlatt">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="vpOrdinationInfoPIB" type="impl:VpOrdinationInfoPIB"/>
+      <element name="uze" type="impl:UZEWeisung"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="VpOrdinationInfoPIB">
+    <sequence>
+     <element name="adresse" nillable="true" type="xsd:string"/>
+     <element name="ordinationsZeiten" nillable="true" type="xsd:string"/>
+     <element name="vornameVp" nillable="true" type="xsd:string"/>
+     <element name="zunameVp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="preparePatientenInformationsBlattResponse">
+    <complexType>
+     <sequence>
+      <element name="preparePatientenInformationsBlattReturn" type="impl:PIBPrepareResp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="PIBPrepareResp">
+    <sequence>
+     <element name="pib" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="retrieveUzeAnlage">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="retrieveUzeAnlageReq" type="impl:RetrieveUzeAnlageReq"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="RetrieveUzeAnlageReq">
+    <sequence>
+     <element name="ecardTicket" nillable="true" type="impl:ECardTicket"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="uzeCode" nillable="true" type="xsd:string"/>
+     <element name="uzeId" type="xsd:long"/>
+     <element name="version" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <element name="retrieveUzeAnlageResponse">
+    <complexType/>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://soap.base.client.chipkarte.at" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://soap.uze.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.uze.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.base.client.chipkarte.at"/>
+   <complexType name="Property">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:string"/>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="BaseProperty">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:string"/>
+     <element name="nurAnzeige" type="xsd:boolean"/>
+     <element name="text" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://exceptions.soap.base.client.chipkarte.at" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://soap.uze.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.uze.client.chipkarte.at"/>
+   <import namespace="http://soap.base.client.chipkarte.at"/>
+   <complexType name="BaseException">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:string"/>
+     <element name="errorCode" type="xsd:int"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AccessException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="DialogException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ServiceException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CardException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://exceptions.soap.uze.client.chipkarte.at" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://soap.uze.client.chipkarte.at"/>
+   <import namespace="http://soap.base.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.base.client.chipkarte.at"/>
+   <complexType name="UzeInvalidParameterException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UzeException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UzeAnspruchException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence>
+       <element minOccurs="0" maxOccurs="unbounded" name="anspruch" nillable="true" type="impl:Anspruch"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="UzeFachgebietException">
+    <complexContent>
+     <extension base="tns2:BaseException">
+      <sequence>
+       <element maxOccurs="unbounded" name="fachgebiete" nillable="true" type="tns1:BaseProperty"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="changeUzeLaResponse">
+
+      <wsdl:part element="impl:changeUzeLaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="CardException">
+
+      <wsdl:part element="impl:fault3" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelUzeLaResponse">
+
+      <wsdl:part element="impl:cancelUzeLaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="storeUzeRequest">
+
+      <wsdl:part element="impl:storeUze" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="preparePatientenInformationsBlattRequest">
+
+      <wsdl:part element="impl:preparePatientenInformationsBlatt" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFachgebieteZoResponse">
+
+      <wsdl:part element="impl:getFachgebieteZoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getWeisungstypenLeResponse">
+
+      <wsdl:part element="impl:getWeisungstypenLeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchModifiableUzeLaResponse">
+
+      <wsdl:part element="impl:searchModifiableUzeLaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="acquireAnspruchSvPersonRequest">
+
+      <wsdl:part element="impl:acquireAnspruchSvPerson" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="UzeException">
+
+      <wsdl:part element="impl:fault5" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBehandlungskontexteRequest">
+
+      <wsdl:part element="impl:getBehandlungskontexte" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelUzeLeResponse">
+
+      <wsdl:part element="impl:cancelUzeLeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchRealizableZoResponse">
+
+      <wsdl:part element="impl:searchRealizableZoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getWeisungstypenLeRequest">
+
+      <wsdl:part element="impl:getWeisungstypenLe" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchModifiableUzeLaRequest">
+
+      <wsdl:part element="impl:searchModifiableUzeLa" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getModifyUzeStatusLaRequest">
+
+      <wsdl:part element="impl:getModifyUzeStatusLa" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllUzeStatusResponse">
+
+      <wsdl:part element="impl:getAllUzeStatusResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="UzeAnspruchException">
+
+      <wsdl:part element="impl:fault6" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBehandlungskontexteResponse">
+
+      <wsdl:part element="impl:getBehandlungskontexteResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changeUzeLaRequest">
+
+      <wsdl:part element="impl:changeUzeLa" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="UzeInvalidParameterException">
+
+      <wsdl:part element="impl:fault4" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkStatusRequest">
+
+      <wsdl:part element="impl:checkStatus" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="realizeUzeResponse">
+
+      <wsdl:part element="impl:realizeUzeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getModifyUzeStatusLaResponse">
+
+      <wsdl:part element="impl:getModifyUzeStatusLaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getWeisungstypenLaRequest">
+
+      <wsdl:part element="impl:getWeisungstypenLa" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="acquireAnspruchSvPersonResponse">
+
+      <wsdl:part element="impl:acquireAnspruchSvPersonResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchModifiableUzeLeRequest">
+
+      <wsdl:part element="impl:searchModifiableUzeLe" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveUzeAnlageResponse">
+
+      <wsdl:part element="impl:retrieveUzeAnlageResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ServiceException">
+
+      <wsdl:part element="impl:fault2" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchUzeLaRequest">
+
+      <wsdl:part element="impl:searchUzeLa" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchUzeLaResponse">
+
+      <wsdl:part element="impl:searchUzeLaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="realizeUzeRequest">
+
+      <wsdl:part element="impl:realizeUze" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="restoreUzeLaRequest">
+
+      <wsdl:part element="impl:restoreUzeLa" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchLeForZoRequest">
+
+      <wsdl:part element="impl:searchLeForZo" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllUzeStatusRequest">
+
+      <wsdl:part element="impl:getAllUzeStatus" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFachgebieteZoRequest">
+
+      <wsdl:part element="impl:getFachgebieteZo" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="preparePatientenInformationsBlattResponse">
+
+      <wsdl:part element="impl:preparePatientenInformationsBlattResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelUzeLaRequest">
+
+      <wsdl:part element="impl:cancelUzeLa" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchLeForZoResponse">
+
+      <wsdl:part element="impl:searchLeForZoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchUzeLeRequest">
+
+      <wsdl:part element="impl:searchUzeLe" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getWeisungstypenLaResponse">
+
+      <wsdl:part element="impl:getWeisungstypenLaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="storeUzeResponse">
+
+      <wsdl:part element="impl:storeUzeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="UzeFachgebietException">
+
+      <wsdl:part element="impl:fault7" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkStatusResponse">
+
+      <wsdl:part element="impl:checkStatusResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelUzeLeRequest">
+
+      <wsdl:part element="impl:cancelUzeLe" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchModifiableUzeLeResponse">
+
+      <wsdl:part element="impl:searchModifiableUzeLeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchRealizableUzeRequest">
+
+      <wsdl:part element="impl:searchRealizableUze" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchRealizableZoRequest">
+
+      <wsdl:part element="impl:searchRealizableZo" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="AccessException">
+
+      <wsdl:part element="impl:fault" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchUzeLeResponse">
+
+      <wsdl:part element="impl:searchUzeLeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="restoreUzeLaResponse">
+
+      <wsdl:part element="impl:restoreUzeLaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveUzeAnlageRequest">
+
+      <wsdl:part element="impl:retrieveUzeAnlage" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="DialogException">
+
+      <wsdl:part element="impl:fault1" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchRealizableUzeResponse">
+
+      <wsdl:part element="impl:searchRealizableUzeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="IUzeService">
+
+      <wsdl:operation name="checkStatus">
+
+         <wsdl:input message="impl:checkStatusRequest" name="checkStatusRequest"/>
+
+         <wsdl:output message="impl:checkStatusResponse" name="checkStatusResponse"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFachgebieteZo">
+
+         <wsdl:input message="impl:getFachgebieteZoRequest" name="getFachgebieteZoRequest"/>
+
+         <wsdl:output message="impl:getFachgebieteZoResponse" name="getFachgebieteZoResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getWeisungstypenLa">
+
+         <wsdl:input message="impl:getWeisungstypenLaRequest" name="getWeisungstypenLaRequest"/>
+
+         <wsdl:output message="impl:getWeisungstypenLaResponse" name="getWeisungstypenLaResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getWeisungstypenLe">
+
+         <wsdl:input message="impl:getWeisungstypenLeRequest" name="getWeisungstypenLeRequest"/>
+
+         <wsdl:output message="impl:getWeisungstypenLeResponse" name="getWeisungstypenLeResponse"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBehandlungskontexte">
+
+         <wsdl:input message="impl:getBehandlungskontexteRequest" name="getBehandlungskontexteRequest"/>
+
+         <wsdl:output message="impl:getBehandlungskontexteResponse" name="getBehandlungskontexteResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getModifyUzeStatusLa">
+
+         <wsdl:input message="impl:getModifyUzeStatusLaRequest" name="getModifyUzeStatusLaRequest"/>
+
+         <wsdl:output message="impl:getModifyUzeStatusLaResponse" name="getModifyUzeStatusLaResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllUzeStatus">
+
+         <wsdl:input message="impl:getAllUzeStatusRequest" name="getAllUzeStatusRequest"/>
+
+         <wsdl:output message="impl:getAllUzeStatusResponse" name="getAllUzeStatusResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acquireAnspruchSvPerson">
+
+         <wsdl:input message="impl:acquireAnspruchSvPersonRequest" name="acquireAnspruchSvPersonRequest"/>
+
+         <wsdl:output message="impl:acquireAnspruchSvPersonResponse" name="acquireAnspruchSvPersonResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:UzeAnspruchException" name="UzeAnspruchException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchLeForZo">
+
+         <wsdl:input message="impl:searchLeForZoRequest" name="searchLeForZoRequest"/>
+
+         <wsdl:output message="impl:searchLeForZoResponse" name="searchLeForZoResponse"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="storeUze">
+
+         <wsdl:input message="impl:storeUzeRequest" name="storeUzeRequest"/>
+
+         <wsdl:output message="impl:storeUzeResponse" name="storeUzeResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:UzeAnspruchException" name="UzeAnspruchException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchUzeLa">
+
+         <wsdl:input message="impl:searchUzeLaRequest" name="searchUzeLaRequest"/>
+
+         <wsdl:output message="impl:searchUzeLaResponse" name="searchUzeLaResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchModifiableUzeLa">
+
+         <wsdl:input message="impl:searchModifiableUzeLaRequest" name="searchModifiableUzeLaRequest"/>
+
+         <wsdl:output message="impl:searchModifiableUzeLaResponse" name="searchModifiableUzeLaResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeUzeLa">
+
+         <wsdl:input message="impl:changeUzeLaRequest" name="changeUzeLaRequest"/>
+
+         <wsdl:output message="impl:changeUzeLaResponse" name="changeUzeLaResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelUzeLa">
+
+         <wsdl:input message="impl:cancelUzeLaRequest" name="cancelUzeLaRequest"/>
+
+         <wsdl:output message="impl:cancelUzeLaResponse" name="cancelUzeLaResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restoreUzeLa">
+
+         <wsdl:input message="impl:restoreUzeLaRequest" name="restoreUzeLaRequest"/>
+
+         <wsdl:output message="impl:restoreUzeLaResponse" name="restoreUzeLaResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchRealizableUze">
+
+         <wsdl:input message="impl:searchRealizableUzeRequest" name="searchRealizableUzeRequest"/>
+
+         <wsdl:output message="impl:searchRealizableUzeResponse" name="searchRealizableUzeResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchRealizableZo">
+
+         <wsdl:input message="impl:searchRealizableZoRequest" name="searchRealizableZoRequest"/>
+
+         <wsdl:output message="impl:searchRealizableZoResponse" name="searchRealizableZoResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="realizeUze">
+
+         <wsdl:input message="impl:realizeUzeRequest" name="realizeUzeRequest"/>
+
+         <wsdl:output message="impl:realizeUzeResponse" name="realizeUzeResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:UzeFachgebietException" name="UzeFachgebietException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:UzeAnspruchException" name="UzeAnspruchException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchUzeLe">
+
+         <wsdl:input message="impl:searchUzeLeRequest" name="searchUzeLeRequest"/>
+
+         <wsdl:output message="impl:searchUzeLeResponse" name="searchUzeLeResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchModifiableUzeLe">
+
+         <wsdl:input message="impl:searchModifiableUzeLeRequest" name="searchModifiableUzeLeRequest"/>
+
+         <wsdl:output message="impl:searchModifiableUzeLeResponse" name="searchModifiableUzeLeResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelUzeLe">
+
+         <wsdl:input message="impl:cancelUzeLeRequest" name="cancelUzeLeRequest"/>
+
+         <wsdl:output message="impl:cancelUzeLeResponse" name="cancelUzeLeResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="preparePatientenInformationsBlatt">
+
+         <wsdl:input message="impl:preparePatientenInformationsBlattRequest" name="preparePatientenInformationsBlattRequest"/>
+
+         <wsdl:output message="impl:preparePatientenInformationsBlattResponse" name="preparePatientenInformationsBlattResponse"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveUzeAnlage">
+
+         <wsdl:input message="impl:retrieveUzeAnlageRequest" name="retrieveUzeAnlageRequest"/>
+
+         <wsdl:output message="impl:retrieveUzeAnlageResponse" name="retrieveUzeAnlageResponse"/>
+
+         <wsdl:fault message="impl:UzeException" name="UzeException"/>
+
+         <wsdl:fault message="impl:AccessException" name="AccessException"/>
+
+         <wsdl:fault message="impl:UzeInvalidParameterException" name="UzeInvalidParameterException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="soap_uze_2.0SoapBinding" type="impl:IUzeService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="checkStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkStatusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFachgebieteZo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFachgebieteZoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFachgebieteZoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getWeisungstypenLa">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getWeisungstypenLaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getWeisungstypenLaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getWeisungstypenLe">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getWeisungstypenLeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getWeisungstypenLeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBehandlungskontexte">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBehandlungskontexteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBehandlungskontexteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getModifyUzeStatusLa">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getModifyUzeStatusLaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getModifyUzeStatusLaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllUzeStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllUzeStatusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllUzeStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acquireAnspruchSvPerson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="acquireAnspruchSvPersonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="acquireAnspruchSvPersonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeAnspruchException">
+
+            <wsdlsoap:fault name="UzeAnspruchException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchLeForZo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchLeForZoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchLeForZoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="storeUze">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="storeUzeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="storeUzeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeAnspruchException">
+
+            <wsdlsoap:fault name="UzeAnspruchException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchUzeLa">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchUzeLaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchUzeLaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchModifiableUzeLa">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchModifiableUzeLaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchModifiableUzeLaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeUzeLa">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changeUzeLaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changeUzeLaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelUzeLa">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelUzeLaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelUzeLaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="restoreUzeLa">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="restoreUzeLaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="restoreUzeLaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchRealizableUze">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchRealizableUzeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchRealizableUzeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchRealizableZo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchRealizableZoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchRealizableZoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="realizeUze">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="realizeUzeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="realizeUzeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeFachgebietException">
+
+            <wsdlsoap:fault name="UzeFachgebietException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeAnspruchException">
+
+            <wsdlsoap:fault name="UzeAnspruchException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchUzeLe">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchUzeLeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchUzeLeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchModifiableUzeLe">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchModifiableUzeLeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchModifiableUzeLeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelUzeLe">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelUzeLeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelUzeLeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="preparePatientenInformationsBlatt">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="preparePatientenInformationsBlattRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="preparePatientenInformationsBlattResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveUzeAnlage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveUzeAnlageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveUzeAnlageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="UzeException">
+
+            <wsdlsoap:fault name="UzeException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="AccessException">
+
+            <wsdlsoap:fault name="AccessException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="UzeInvalidParameterException">
+
+            <wsdlsoap:fault name="UzeInvalidParameterException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="soap_uze_2.0">
+
+      <wsdl:port binding="impl:soap_uze_2.0SoapBinding" name="soap_uze_2.0">
+
+         <wsdlsoap:address location="http://localhost/axis/services/soap_uze_2.0"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

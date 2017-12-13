@@ -1,0 +1,1933 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://vp.soap.base.client.chipkarte.at" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://vp.soap.base.client.chipkarte.at" xmlns:intf="http://vp.soap.base.client.chipkarte.at" xmlns:tns1="http://exceptions.soap.base.client.chipkarte.at" xmlns:tns2="http://soap.base.client.chipkarte.at" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.2RC1
+Built on Sep 29, 2004 (08:29:40 EDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://vp.soap.base.client.chipkarte.at" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exceptions.soap.base.client.chipkarte.at"/>
+   <import namespace="http://soap.base.client.chipkarte.at"/>
+   <element name="createDialog">
+    <complexType>
+     <sequence>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="produktInfo" type="impl:ProduktInfo"/>
+      <element name="extUID" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ProduktInfo">
+    <sequence>
+     <element name="produktId" type="xsd:int"/>
+     <element name="produktVersion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="createDialogResponse">
+    <complexType>
+     <sequence>
+      <element name="createDialogReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns1:CardException"/>
+   <element name="fault1" type="tns1:DialogException"/>
+   <element name="fault2" type="tns1:ServiceException"/>
+   <element name="fault4" type="tns1:AccessException"/>
+   <element name="getCardReaders">
+    <complexType/>
+   </element>
+   <element name="getCardReadersResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" nillable="true" name="getCardReadersReturn" type="tns2:CardReader"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCardData">
+    <complexType>
+     <sequence>
+      <element name="cardReaderId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCardDataResponse">
+    <complexType>
+     <sequence>
+      <element name="getCardDataReturn" type="tns2:Card"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getExtendedCardData">
+    <complexType>
+     <sequence>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="CIN" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getExtendedCardDataResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getExtendedCardDataReturn" nillable="true" type="tns2:Property"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="changePin">
+    <complexType>
+     <sequence>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="cin" type="xsd:string"/>
+      <element name="oldPin" type="xsd:string"/>
+      <element name="newPin" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="changePinResponse">
+    <complexType/>
+   </element>
+   <element name="changePinWithPuk">
+    <complexType>
+     <sequence>
+      <element name="cardReaderId" type="xsd:string"/>
+      <element name="cin" type="xsd:string"/>
+      <element name="puk" type="xsd:string"/>
+      <element name="newPin" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="changePinWithPukResponse">
+    <complexType/>
+   </element>
+   <element name="doCardTest">
+    <complexType>
+     <sequence>
+      <element name="cardReaderId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="doCardTestResponse">
+    <complexType>
+     <sequence>
+      <element name="doCardTestReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="authenticateDialog">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="cin" type="xsd:string"/>
+      <element name="pin" type="xsd:string"/>
+      <element name="systemType" type="xsd:int"/>
+      <element name="cardReaderId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="authenticateDialogResponse">
+    <complexType>
+     <sequence>
+      <element name="authenticateDialogReturn" type="tns2:Vertragspartner"/>
+     </sequence>
+    </complexType>
+   </element>
+   
+   <element name="setDialogAddress">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="ordinationId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setDialogAddressResponse">
+    <complexType/>
+   </element>
+   <element name="closeDialog">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="closeDialogResponse">
+    <complexType/>
+   </element>
+   <element name="checkStatus">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkStatusResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="checkStatusReturn" type="tns2:Property"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="uebersiedelnOrdination">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="ordinationId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="uebersiedelnOrdinationResponse">
+    <complexType/>
+   </element>
+   <element name="getMessages">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="newOnly" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getMessagesResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="getMessagesReturn" type="tns2:Message"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFreeDialogs">
+    <complexType/>
+   </element>
+   <element name="getFreeDialogsResponse">
+    <complexType>
+     <sequence>
+      <element name="getFreeDialogsReturn" type="tns2:DialogsInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getGinaSoftwareVersion">
+    <complexType/>
+   </element>
+   <element name="getGinaSoftwareVersionResponse">
+    <complexType>
+     <sequence>
+      <element name="getGinaSoftwareVersionReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getVertraege">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getVertraegeResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getVertraegeReturn" type="tns2:VertragsDaten" nillable="true"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBCardSvPerson">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="forceExecution" type="xsd:boolean"/>
+      <element name="readerId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBCardSvPersonResponse">
+    <complexType>
+     <sequence>
+      <element name="getBCardSvPersonReturn" type="tns2:SvPerson"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault3" type="tns1:BCardException"/>
+   <element name="getSVTs">
+    <complexType/>
+   </element>
+   <element name="getSVTsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getSVTsReturn" type="tns2:SvtProperty"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFachgebiete">
+    <complexType/>
+   </element>
+   <element name="getFachgebieteResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getFachgebieteReturn" type="tns2:BaseProperty"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFachgebieteByOrdId">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="ordId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFachgebieteByOrdIdResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="getFachgebieteByOrdIdReturn" type="tns2:BaseProperty"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getGinaAndServiceavailabilityInformation">
+    <complexType/>
+   </element>
+   <element name="getGinaAndServiceavailabilityInformationResponse">
+    <complexType>
+     <sequence>
+      <element name="getGinaAndServiceavailabilityInformationReturn" type="tns2:StatusInformationen"/>
+     </sequence>
+    </complexType>
+   </element>
+   
+   <element name="setCardReader">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+      <element name="cardReaderId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setCardReaderResponse">
+    <complexType/>
+   </element>
+   <element name="getReaderStatusEvents">
+    <complexType>
+     <sequence>
+      <element name="handle" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="cardReaderId" type="xsd:string"/>
+      <element name="timeOut" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getReaderStatusEventsResponse">
+    <complexType>
+     <sequence>
+      <element name="getReaderStatusEventsReturn" type="tns2:ReaderStatusResult"/>
+     </sequence>
+    </complexType>
+   </element>
+   
+   <element name="releaseCardReader">
+    <complexType>
+     <sequence>
+      <element name="cardReaderId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="releaseCardReaderResponse">
+    <complexType/>
+   </element>
+   <element name="getBerechtigungen">
+    <complexType>
+     <sequence>
+      <element name="dialogId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBerechtigungenResponse">
+    <complexType>
+     <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="getBerechtigungenReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://exceptions.soap.base.client.chipkarte.at" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vp.soap.base.client.chipkarte.at"/>
+   <import namespace="http://soap.base.client.chipkarte.at"/>
+   <complexType name="BaseException">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:string"/>
+     <element name="errorCode" type="xsd:int"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CardException">
+    <complexContent>
+     <extension base="tns1:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="DialogException">
+    <complexContent>
+     <extension base="tns1:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ServiceException">
+    <complexContent>
+     <extension base="tns1:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="BCardException">
+    <complexContent>
+     <extension base="tns1:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AccessException">
+    <complexContent>
+     <extension base="tns1:BaseException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://soap.base.client.chipkarte.at" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vp.soap.base.client.chipkarte.at"/>
+   <import namespace="http://exceptions.soap.base.client.chipkarte.at"/>
+   <complexType name="CardReader">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Card">
+    <sequence>
+     <element name="cardType" nillable="true" type="xsd:string"/>
+     <element name="cin" nillable="true" type="xsd:string"/>
+     <element name="csn" nillable="true" type="xsd:string"/>
+     <element name="geburtsdatum" nillable="true" type="xsd:string"/>
+     <element name="geschlechtCode" nillable="true" type="xsd:string"/>
+     <element name="nachname" nillable="true" type="xsd:string"/>
+     <element name="nachnameLatin1" nillable="true" type="xsd:string"/>
+     <element name="nummer" nillable="true" type="xsd:string"/>
+     <element name="titel" nillable="true" type="xsd:string"/>
+     <element name="titelHinten" nillable="true" type="xsd:string"/>
+     <element name="titelHintenLatin1" nillable="true" type="xsd:string"/>
+     <element name="titelLatin1" nillable="true" type="xsd:string"/>
+     <element name="vorname" nillable="true" type="xsd:string"/>
+     <element name="vornameLatin1" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Property">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:string"/>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AuthenticationStatus">
+    <sequence>
+     <element name="failedLoginAttempts" type="xsd:int"/>
+     <element name="failedPINAttempts" type="xsd:int"/>
+     <element name="lastLoginDate" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Ordination">
+    <sequence>
+     <element name="bezirk" nillable="true" type="xsd:string"/>
+     <element name="bundeslandCode" nillable="true" type="xsd:string"/>
+     <element name="landCode" nillable="true" type="xsd:string"/>
+     <element name="ordinationId" nillable="true" type="xsd:string"/>
+     <element name="ordinationNumber" type="xsd:long"/>
+     <element name="postleitzahl" nillable="true" type="xsd:string"/>
+     <element name="stadt" nillable="true" type="xsd:string"/>
+     <element name="strasse" nillable="true" type="xsd:string"/>
+     <element name="uebersiedeln" type="xsd:boolean"/>
+     <element name="uebersiedelnDate" nillable="true" type="xsd:string"/>
+     <element name="vorgaengerOrdinationId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Vertragspartner">
+    <sequence>
+     <element name="anredeCode" nillable="true" type="xsd:string"/>
+     <element name="authenticationStatus" nillable="true" type="tns2:AuthenticationStatus"/>
+     <element name="druckNachname" nillable="true" type="xsd:string"/>
+     <element name="druckVorname" nillable="true" type="xsd:string"/>
+     <element name="geburtsdatum" nillable="true" type="xsd:string"/>
+     <element name="nachname" nillable="true" type="xsd:string"/>
+     <element name="niederlassungsgrundCode" nillable="true" type="xsd:string"/>
+     <element maxOccurs="unbounded" name="ordination" nillable="true" type="tns2:Ordination"/>
+     <element name="titelHinten" nillable="true" type="xsd:string"/>
+     <element name="titelVorne" nillable="true" type="xsd:string"/>
+     <element name="vorname" nillable="true" type="xsd:string"/>
+     <element name="vpId" nillable="true" type="xsd:string"/>
+     <element name="vpNummer" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Message">
+    <sequence>
+     <element name="appid" nillable="true" type="xsd:string"/>
+     <element name="category" nillable="true" type="xsd:string"/>
+     <element name="data" nillable="true" type="xsd:string"/>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="text" nillable="true" type="xsd:string"/>
+     <element name="timestamp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DialogsInfo">
+    <sequence>
+     <element name="currentDialogsCount" type="xsd:int"/>
+     <element name="maxDialogsCount" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="VertragsDaten">
+    <sequence>
+     <element name="bezBereich" nillable="true" type="xsd:string"/>
+     <element name="fachGebietsCode" nillable="true" type="xsd:string"/>
+     <element name="konsultationsrecht" type="xsd:boolean"/>
+     <element name="leistungsSVT" nillable="true" type="xsd:string"/>
+     <element name="ordId" nillable="true" type="xsd:string"/>
+     <element name="rezepturrecht" type="xsd:boolean"/>
+     <element name="verrechnungsSVT" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SvPerson">
+    <sequence>
+     <element name="geburtsdatum" nillable="true" type="xsd:string"/>
+     <element name="geschlecht" nillable="true" type="xsd:string"/>
+     <element name="nachname" nillable="true" type="xsd:string"/>
+     <element name="svNummer" nillable="true" type="xsd:string"/>
+     <element name="titelHinten" nillable="true" type="xsd:string"/>
+     <element name="titelVorne" nillable="true" type="xsd:string"/>
+     <element name="vorname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="BaseProperty">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:string"/>
+     <element name="nurAnzeige" type="xsd:boolean"/>
+     <element name="text" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SvtProperty">
+    <complexContent>
+     <extension base="tns2:BaseProperty">
+      <sequence>
+       <element name="ASVG" type="xsd:boolean"/>
+       <element name="EKVKCode" nillable="true" type="xsd:string"/>
+       <element name="EKVKName" nillable="true" type="xsd:string"/>
+       <element name="kurzbezeichnung" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="GinaInfo">
+    <sequence>
+     <element name="dnsName" nillable="true" type="xsd:string"/>
+     <element name="ipAdresse" nillable="true" type="xsd:string"/>
+     <element name="isdnKennzeichen" type="xsd:boolean"/>
+     <element name="produktVersion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ServiceStatusInformation">
+    <sequence>
+     <element name="hinweisAktion" nillable="true" type="xsd:string"/>
+     <element name="hinweisZusatz" nillable="true" type="xsd:string"/>
+     <element name="modus" type="xsd:boolean"/>
+     <element name="modusText" nillable="true" type="xsd:string"/>
+     <element name="serviceName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="StatusInformationen">
+    <sequence>
+     <element name="ginaInfo" nillable="true" type="tns2:GinaInfo"/>
+     <element maxOccurs="unbounded" name="serviceStatusInformation" nillable="true" type="tns2:ServiceStatusInformation"/>
+     <element name="wartungsfensterBis" nillable="true" type="xsd:string"/>
+     <element name="wartungsfensterHinweis" nillable="true" type="xsd:string"/>
+     <element name="wartungsfensterKennzeichen" type="xsd:boolean"/>
+     <element name="wartungsfensterText" nillable="true" type="xsd:string"/>
+     <element name="wartungsfensterVon" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ReaderStatusEvent">
+    <sequence>
+     <element name="cardReaderId" nillable="true" type="xsd:string"/>
+     <element name="cardReaderState" nillable="true" type="xsd:string"/>
+     <element name="cardType" nillable="true" type="xsd:string"/>
+     <element name="eventType" nillable="true" type="xsd:string"/>
+     <element name="timeStamp" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ReaderStatusResult">
+    <sequence>
+     <element name="handle" nillable="true" type="xsd:string"/>
+     <element minOccurs="0" maxOccurs="unbounded" name="readerStatusEvents" nillable="true" type="tns2:ReaderStatusEvent"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="changePinWithPukRequest">
+
+      <wsdl:part element="impl:changePinWithPuk" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSVTsRequest">
+
+      <wsdl:part element="impl:getSVTs" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFreeDialogsResponse">
+
+      <wsdl:part element="impl:getFreeDialogsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBerechtigungenResponse">
+
+      <wsdl:part element="impl:getBerechtigungenResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changePinResponse">
+
+      <wsdl:part element="impl:changePinResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getExtendedCardDataRequest">
+
+      <wsdl:part element="impl:getExtendedCardData" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createDialogResponse">
+
+      <wsdl:part element="impl:createDialogResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="releaseCardReaderResponse">
+
+      <wsdl:part element="impl:releaseCardReaderResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="authenticateDialogResponse">
+
+      <wsdl:part element="impl:authenticateDialogResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setDialogAddressResponse">
+
+      <wsdl:part element="impl:setDialogAddressResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBerechtigungenRequest">
+
+      <wsdl:part element="impl:getBerechtigungen" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkStatusResponse">
+
+      <wsdl:part element="impl:checkStatusResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getVertraegeRequest">
+
+      <wsdl:part element="impl:getVertraege" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFachgebieteRequest">
+
+      <wsdl:part element="impl:getFachgebiete" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBCardSvPersonResponse">
+
+      <wsdl:part element="impl:getBCardSvPersonResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFreeDialogsRequest">
+
+      <wsdl:part element="impl:getFreeDialogs" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkStatusRequest">
+
+      <wsdl:part element="impl:checkStatus" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCardReadersResponse">
+
+      <wsdl:part element="impl:getCardReadersResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGinaSoftwareVersionRequest">
+
+      <wsdl:part element="impl:getGinaSoftwareVersion" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ServiceException">
+
+      <wsdl:part element="impl:fault2" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="AccessException">
+
+      <wsdl:part element="impl:fault4" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getExtendedCardDataResponse">
+
+      <wsdl:part element="impl:getExtendedCardDataResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="doCardTestRequest">
+
+      <wsdl:part element="impl:doCardTest" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="DialogException">
+
+      <wsdl:part element="impl:fault1" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changePinRequest">
+
+      <wsdl:part element="impl:changePin" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setDialogAddressRequest">
+
+      <wsdl:part element="impl:setDialogAddress" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="closeDialogRequest">
+
+      <wsdl:part element="impl:closeDialog" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changePinWithPukResponse">
+
+      <wsdl:part element="impl:changePinWithPukResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getReaderStatusEventsRequest">
+
+      <wsdl:part element="impl:getReaderStatusEvents" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFachgebieteByOrdIdRequest">
+
+      <wsdl:part element="impl:getFachgebieteByOrdId" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="uebersiedelnOrdinationRequest">
+
+      <wsdl:part element="impl:uebersiedelnOrdination" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="releaseCardReaderRequest">
+
+      <wsdl:part element="impl:releaseCardReader" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGinaSoftwareVersionResponse">
+
+      <wsdl:part element="impl:getGinaSoftwareVersionResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGinaAndServiceavailabilityInformationResponse">
+
+      <wsdl:part element="impl:getGinaAndServiceavailabilityInformationResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getVertraegeResponse">
+
+      <wsdl:part element="impl:getVertraegeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getReaderStatusEventsResponse">
+
+      <wsdl:part element="impl:getReaderStatusEventsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBCardSvPersonRequest">
+
+      <wsdl:part element="impl:getBCardSvPerson" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMessagesResponse">
+
+      <wsdl:part element="impl:getMessagesResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMessagesRequest">
+
+      <wsdl:part element="impl:getMessages" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSVTsResponse">
+
+      <wsdl:part element="impl:getSVTsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFachgebieteResponse">
+
+      <wsdl:part element="impl:getFachgebieteResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="doCardTestResponse">
+
+      <wsdl:part element="impl:doCardTestResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCardDataRequest">
+
+      <wsdl:part element="impl:getCardData" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="CardException">
+
+      <wsdl:part element="impl:fault" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="authenticateDialogRequest">
+
+      <wsdl:part element="impl:authenticateDialog" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="uebersiedelnOrdinationResponse">
+
+      <wsdl:part element="impl:uebersiedelnOrdinationResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createDialogRequest">
+
+      <wsdl:part element="impl:createDialog" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="closeDialogResponse">
+
+      <wsdl:part element="impl:closeDialogResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFachgebieteByOrdIdResponse">
+
+      <wsdl:part element="impl:getFachgebieteByOrdIdResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCardReadersRequest">
+
+      <wsdl:part element="impl:getCardReaders" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCardDataResponse">
+
+      <wsdl:part element="impl:getCardDataResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGinaAndServiceavailabilityInformationRequest">
+
+      <wsdl:part element="impl:getGinaAndServiceavailabilityInformation" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setCardReaderRequest">
+
+      <wsdl:part element="impl:setCardReader" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="BCardException">
+
+      <wsdl:part element="impl:fault3" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setCardReaderResponse">
+
+      <wsdl:part element="impl:setCardReaderResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="IBaseServiceVP">
+
+      <wsdl:operation name="createDialog">
+
+         <wsdl:input message="impl:createDialogRequest" name="createDialogRequest"/>
+
+         <wsdl:output message="impl:createDialogResponse" name="createDialogResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCardReaders">
+
+         <wsdl:input message="impl:getCardReadersRequest" name="getCardReadersRequest"/>
+
+         <wsdl:output message="impl:getCardReadersResponse" name="getCardReadersResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCardData">
+
+         <wsdl:input message="impl:getCardDataRequest" name="getCardDataRequest"/>
+
+         <wsdl:output message="impl:getCardDataResponse" name="getCardDataResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getExtendedCardData">
+
+         <wsdl:input message="impl:getExtendedCardDataRequest" name="getExtendedCardDataRequest"/>
+
+         <wsdl:output message="impl:getExtendedCardDataResponse" name="getExtendedCardDataResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changePin">
+
+         <wsdl:input message="impl:changePinRequest" name="changePinRequest"/>
+
+         <wsdl:output message="impl:changePinResponse" name="changePinResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changePinWithPuk">
+
+         <wsdl:input message="impl:changePinWithPukRequest" name="changePinWithPukRequest"/>
+
+         <wsdl:output message="impl:changePinWithPukResponse" name="changePinWithPukResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="doCardTest">
+
+         <wsdl:input message="impl:doCardTestRequest" name="doCardTestRequest"/>
+
+         <wsdl:output message="impl:doCardTestResponse" name="doCardTestResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="authenticateDialog">
+
+         <wsdl:input message="impl:authenticateDialogRequest" name="authenticateDialogRequest"/>
+
+         <wsdl:output message="impl:authenticateDialogResponse" name="authenticateDialogResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setDialogAddress">
+
+         <wsdl:input message="impl:setDialogAddressRequest" name="setDialogAddressRequest"/>
+
+         <wsdl:output message="impl:setDialogAddressResponse" name="setDialogAddressResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="closeDialog">
+
+         <wsdl:input message="impl:closeDialogRequest" name="closeDialogRequest"/>
+
+         <wsdl:output message="impl:closeDialogResponse" name="closeDialogResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkStatus">
+
+         <wsdl:input message="impl:checkStatusRequest" name="checkStatusRequest"/>
+
+         <wsdl:output message="impl:checkStatusResponse" name="checkStatusResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="uebersiedelnOrdination">
+
+         <wsdl:input message="impl:uebersiedelnOrdinationRequest" name="uebersiedelnOrdinationRequest"/>
+
+         <wsdl:output message="impl:uebersiedelnOrdinationResponse" name="uebersiedelnOrdinationResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMessages">
+
+         <wsdl:input message="impl:getMessagesRequest" name="getMessagesRequest"/>
+
+         <wsdl:output message="impl:getMessagesResponse" name="getMessagesResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFreeDialogs">
+
+         <wsdl:input message="impl:getFreeDialogsRequest" name="getFreeDialogsRequest"/>
+
+         <wsdl:output message="impl:getFreeDialogsResponse" name="getFreeDialogsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGinaSoftwareVersion">
+
+         <wsdl:input message="impl:getGinaSoftwareVersionRequest" name="getGinaSoftwareVersionRequest"/>
+
+         <wsdl:output message="impl:getGinaSoftwareVersionResponse" name="getGinaSoftwareVersionResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getVertraege">
+
+         <wsdl:input message="impl:getVertraegeRequest" name="getVertraegeRequest"/>
+
+         <wsdl:output message="impl:getVertraegeResponse" name="getVertraegeResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBCardSvPerson">
+
+         <wsdl:input message="impl:getBCardSvPersonRequest" name="getBCardSvPersonRequest"/>
+
+         <wsdl:output message="impl:getBCardSvPersonResponse" name="getBCardSvPersonResponse"/>
+
+         <wsdl:fault message="impl:BCardException" name="BCardException"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSVTs">
+
+         <wsdl:input message="impl:getSVTsRequest" name="getSVTsRequest"/>
+
+         <wsdl:output message="impl:getSVTsResponse" name="getSVTsResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFachgebiete">
+
+         <wsdl:input message="impl:getFachgebieteRequest" name="getFachgebieteRequest"/>
+
+         <wsdl:output message="impl:getFachgebieteResponse" name="getFachgebieteResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFachgebieteByOrdId">
+
+         <wsdl:input message="impl:getFachgebieteByOrdIdRequest" name="getFachgebieteByOrdIdRequest"/>
+
+         <wsdl:output message="impl:getFachgebieteByOrdIdResponse" name="getFachgebieteByOrdIdResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGinaAndServiceavailabilityInformation">
+
+         <wsdl:input message="impl:getGinaAndServiceavailabilityInformationRequest" name="getGinaAndServiceavailabilityInformationRequest"/>
+
+         <wsdl:output message="impl:getGinaAndServiceavailabilityInformationResponse" name="getGinaAndServiceavailabilityInformationResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setCardReader">
+
+         <wsdl:input message="impl:setCardReaderRequest" name="setCardReaderRequest"/>
+
+         <wsdl:output message="impl:setCardReaderResponse" name="setCardReaderResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReaderStatusEvents">
+
+         <wsdl:input message="impl:getReaderStatusEventsRequest" name="getReaderStatusEventsRequest"/>
+
+         <wsdl:output message="impl:getReaderStatusEventsResponse" name="getReaderStatusEventsResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="releaseCardReader">
+
+         <wsdl:input message="impl:releaseCardReaderRequest" name="releaseCardReaderRequest"/>
+
+         <wsdl:output message="impl:releaseCardReaderResponse" name="releaseCardReaderResponse"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+         <wsdl:fault message="impl:CardException" name="CardException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBerechtigungen">
+
+         <wsdl:input message="impl:getBerechtigungenRequest" name="getBerechtigungenRequest"/>
+
+         <wsdl:output message="impl:getBerechtigungenResponse" name="getBerechtigungenResponse"/>
+
+         <wsdl:fault message="impl:DialogException" name="DialogException"/>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="soap_base_7.0SoapBinding" type="impl:IBaseServiceVP">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createDialog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createDialogRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createDialogResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCardReaders">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCardReadersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCardReadersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCardData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCardDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCardDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getExtendedCardData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getExtendedCardDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getExtendedCardDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changePin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changePinRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changePinResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changePinWithPuk">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changePinWithPukRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changePinWithPukResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="doCardTest">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="doCardTestRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="doCardTestResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="authenticateDialog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="authenticateDialogRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="authenticateDialogResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setDialogAddress">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setDialogAddressRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setDialogAddressResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="closeDialog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="closeDialogRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="closeDialogResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkStatusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="uebersiedelnOrdination">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="uebersiedelnOrdinationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="uebersiedelnOrdinationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMessages">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMessagesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMessagesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFreeDialogs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFreeDialogsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFreeDialogsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGinaSoftwareVersion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getGinaSoftwareVersionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getGinaSoftwareVersionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getVertraege">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getVertraegeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getVertraegeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBCardSvPerson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBCardSvPersonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBCardSvPersonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="BCardException">
+
+            <wsdlsoap:fault name="BCardException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSVTs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSVTsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSVTsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFachgebiete">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFachgebieteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFachgebieteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFachgebieteByOrdId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFachgebieteByOrdIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFachgebieteByOrdIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGinaAndServiceavailabilityInformation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getGinaAndServiceavailabilityInformationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getGinaAndServiceavailabilityInformationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setCardReader">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setCardReaderRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setCardReaderResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReaderStatusEvents">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getReaderStatusEventsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getReaderStatusEventsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="releaseCardReader">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="releaseCardReaderRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="releaseCardReaderResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="CardException">
+
+            <wsdlsoap:fault name="CardException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBerechtigungen">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBerechtigungenRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBerechtigungenResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="DialogException">
+
+            <wsdlsoap:fault name="DialogException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="soap_base_7.0">
+
+      <wsdl:port binding="impl:soap_base_7.0SoapBinding" name="soap_base_7.0">
+
+         <wsdlsoap:address location="http://localhost/axis/services/soap_base_7.0"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
