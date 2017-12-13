@@ -1,18 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Austria.WcfHelpers.SoapWithAttachments", "Microsoft.Austria.WcfHelpers.SoapWithAttachments\Microsoft.Austria.WcfHelpers.SoapWithAttachments.csproj", "{AB088324-87A5-4F00-BB2E-904CC6AB967F}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs06.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Microsoft.Austria.WcfHelpers.SoapWithAttachments\\Microsoft.Austria.WcfHelpers.SoapWithAttachments.csproj
-		SccProjectName1 = Microsoft.Austria.WcfHelpers.SoapWithAttachments
-		SccLocalPath1 = Microsoft.Austria.WcfHelpers.SoapWithAttachments
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Development|Any CPU = Development|Any CPU
@@ -28,5 +21,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FA9CB7E-88E0-46AA-B7C0-E2DB21E2D03A}
 	EndGlobalSection
 EndGlobal
